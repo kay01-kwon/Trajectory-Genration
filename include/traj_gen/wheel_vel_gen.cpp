@@ -21,9 +21,10 @@ void WHEEL_VEL_GEN::get_wheel_vel(
             {
                 wheel_linear_vel[i] = 
                 l*des_vel[i]*sin(pos_sensor[i+3]*M_PI/180.0);
-                
+                // std::cout<<"des_vel["<<i<<"]: "<<des_vel[i]<<" "<<std::endl;
                 wheel_angular_vel[i] = 
                 wheel_linear_vel[i]/wheel_radius;
+                std::cout<<"wheel_linear_vel["<<i<<"]: "<<wheel_linear_vel[i]<<" "<<std::endl;
             }
             break;
 
@@ -38,6 +39,13 @@ void WHEEL_VEL_GEN::get_wheel_vel(
             }
             break;
         default:
+
+            for(int i = 0; i < 6;i++)
+            {
+                wheel_linear_vel[i] = 0;
+                wheel_angular_vel[i] = 0;
+            }
+
             break;
 
     }
