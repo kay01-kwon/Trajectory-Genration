@@ -6,7 +6,7 @@
  * The reduction ratio of LIFT, PAN, Steering, respectively.
 */
 const double N_LIFT = 158.0;
-const double N_PAN = 3969.0/256.0;
+const double N_PAN = 3969.0/256.0*110.0/26.0;
 const double N_STEERING = 70.0/40.0;
 
 /**
