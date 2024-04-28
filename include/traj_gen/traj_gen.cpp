@@ -83,10 +83,18 @@ void Traj_Generator::constraint_setup()
     }
     // Allocate dynamic memory for dip
     // and call the corresponding constructor.
-    for(int i = 0; i < 6; i++)
+    for(int i = 0; i < 3; i++)
         dip_ptr[i] = new DoubleIntegralPlanner(
-            traj_constraint[i/3].a_max, 
-            traj_constraint[i/3].v_max);
+            traj_constraint[0].a_max,
+            traj_constraint[0].v_max
+        );
+    
+    for(int i = 3; i < 6; i++)
+        dip_ptr[i] = new DoubleIntegralPlanner(
+            traj_constraint[1].a_max,
+            traj_constraint[1].v_max
+        );
+    
 
 }
 
