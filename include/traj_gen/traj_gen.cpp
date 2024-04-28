@@ -221,6 +221,9 @@ void Traj_Generator::move_motors()
         des_pos, 
         traj_data.v_curr, 
         PAN_WHEEL);
+
+        for(int i = 0; i < 3; i++)
+            des_angular_vel_WHEEL[i] = - des_angular_vel_WHEEL[i];
         
         publish_target();
     }
@@ -233,7 +236,7 @@ void Traj_Generator::publish_target()
     {
         target_msg.target_PAN[i] = convert_deg2target_PAN(des_pos[i]);
         target_msg.target_LIFT[i] = -convert_deg2target_LIFT(des_pos[i+3]-offset_pos[i]);
-        target_msg.target_WHEEL[i] = (int32_t) -(des_angular_vel_WHEEL[i]*degps2RPM);
+        target_msg.target_WHEEL[i] = (int32_t) (des_angular_vel_WHEEL[i]*degps2RPM);
         cout<<"wheel vel: "<<target_msg.target_WHEEL[i]<<" RPM \t";
     }
     cout<<"\n";
